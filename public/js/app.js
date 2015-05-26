@@ -1,0 +1,11 @@
+angular.module('sampleApp',
+    ['ngRoute',
+        'appRoutes',
+        'MainCtrl',
+        'TabCtrl',
+        'FileUploadCtrl',
+        'NerdService',
+        'GeekCtrl',
+        'GeekService',
+        'isteven-multi-select'
+    ]);

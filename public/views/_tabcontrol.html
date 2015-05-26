@@ -1,0 +1,78 @@
+<div class="container form-group">
+	<div class="container">
+		<div class="form-inline">
+			<fieldset>
+				<legend>Account information</legend>
+				<label for="salesForceId">SalesForce ID</label>
+				<input id="salesForceId" name="salesForceId" type="text" class="form-control" ng-model="salesForceId"/>
+				<label for="accountName">Account name</label>
+				<input id="accountName" name="accountName" type="text" class="form-control" ng-model="accountName"/>
+			</fieldset>
+		</div>
+	</div>
+	<br>
+	<tabset>
+		<tab ng-repeat="workspace in workspaces"
+			 heading="{{workspace.name}}"
+			 active=workspace.active>
+			<div>
+				<br/>
+				<label for="siteName">Site Name</label>
+				<input id="siteName" name="siteName" type="text" class="form-control" ng-model="workspace.name"/>
+				<br/>
+				<div ng-include src="'fileUpload/fileUpload.html'">
+
+				</div>
+				<div class="form-group">
+					<fieldset>
+						<legend><strong>OR</strong> fill out the basic information below</legend>
+						<!--<label for="siteName">Site Name</label>-->
+						<!--<input id="siteName" name="siteName" type="text" class="form-control" ng-model="workspace.name"/>-->
+
+						<div class="col-sm-6">
+							<label for="numberOfMainframes">Number of Mainframes</label>
+							<input id="numberOfMainframes" name="numberOfMainframes" type="text" class="form-control" ng-model="workspace.numberOfMainframes"/>
+							<br/>
+							<label for="numberOfStorageFrames">Number of Storage Frames</label>
+							<input id="numberOfStorageFrames" name="numberOfStorageFrames" type="text" class="form-control" ng-model="workspace.numberOfStorageFrames"/>
+							<br/>
+						</div>
+						<div class="col-sm-6">
+							<label for="numberOfUnixServers">Number of Unix/AIX Servers</label>
+							<input id="numberOfUnixServers" name="numberOfUnixServers" type="text" class="form-control" ng-model="workspace.numberOfUnixServers"/>
+							<br/>
+
+
+							<label for="numberOfBladeCenters">Number of Blade Centers</label>
+							<input id="numberOfBladeCenters" name="numberOfBladeCenters" type="text" class="form-control" ng-model="workspace.numberOfBladeCenters"/>
+							<br/>
+						</div>
+
+						<div class="col-sm-6">
+
+							<label for="numberOfx86Servers">Number of x86 Servers</label>
+							<input id="numberOfx86Servers" name="numberOfx86Servers" type="text" class="form-control" ng-model="workspace.numberOfx86Servers"/>
+
+
+						</div>
+
+					</fieldset>
+				</div>
+			</div>
+		</tab>
+		<tab select="addWorkspace()">
+			<tab-heading> Add Site
+				<i class="icon-plus-sign"></i>
+			</tab-heading>
+		</tab>
+		<tab select="removeWorkspace()">
+			<tab-heading> Remove Selected Site
+				<i class="icon-plus-sign"></i>
+			</tab-heading>
+		</tab>
+	</tabset>
+	<br/>
+	<button type="button" class="btn-primary" ng-click="collectValuesFromEachTab()">Generate a Quote</button>
+	<!--<h3>Workspaces</h3>-->
+	<!--<pre>{{workspaces|json}}</pre>-->
+</div>
